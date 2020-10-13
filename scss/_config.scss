@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  /* font size: 1rem = 10px */
+  font-size: 62.5%;
+
+  // color palette
+  --veryDarkBlue: hsl(230, 17%, 14%);
+  --veryDarkBlue-topBgPattern: hsl(232, 19%, 15%);
+  --darkDesaturatedBlue-cardBg: hsl(228, 28%, 20%);
+  --desaturatedBlue-text: hsl(228, 34%, 66%);
+  --white: hsl(0, 0%, 100%);
+  --veryPaleBlue-topBgPattern: hsl(225, 100%, 98%);
+  --lightGrayishBlue-cardBg: hsl(227, 47%, 96%);
+  --darkGrayishBlue-text: hsl(228, 12%, 44%);
+
+  // typography
+  --inter: 'Inter', sans-serif;
+
+  //font weight
+  --regular: 400;
+  --bold: 700;
+}
+
+.light-theme {
+  --body-bg: var(--white);
+  --top-bg-pattern: var(--veryPaleBlue-topBgPattern);
+  --card-bg: var(--lightGrayishBlue-cardBg);
+  --text-default: var(--veryDarkBlue);
+  --text-light: var(--darkGrayishBlue-text);
+}
+
+.dark-theme {
+  --body-bg: var(--veryDarkBlue);
+  --top-bg-pattern: var(--veryDarkBlue-topBgPattern);
+  --card-bg: var(--darkDesaturatedBlue-cardBg);
+  --text-default: var(--white);
+  --text-light: var(--desaturatedBlue-text);
+}
+
+// coloring elements
+body {
+  background-color: var(--body-bg);
+}
+header {
+  background-color: var(--top-bg-pattern);
+}
+header h1,
+p.overall-number,
+.overview-stats p {
+  color: var(--text-default);
+}
+header p,
+.profile p,
+p.overall-unit,
+.overview h3,
+.overview-title {
+  color: var(--text-light);
+}
+.overall-card,
+.overview-card {
+  background-color: var(--card-bg);
+}
+.dark-theme,
+.overview h3 {
+  color: var(--white);
+}
+
+//reset for the moment
+
+body,
+p,
+a,
+ul,
+li,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+
+// font family, font size
+body {
+  font-family: var(--inter);
+  font-weight: var(--bold);
+  // transition between dark theme & light
+  transition: background 500ms ease-in-out, color 1000ms ease-in-out;
+}
+.overall-card {
+  text-align: center;
+  overflow: hidden;
+}
+.bar {
+  width: 100%;
+  height: 4px;
+  &-facebook {
+    background-color: hsl(195, 100%, 50%);
+  }
+  &-twitter {
+    background-color: hsl(203, 89%, 53%);
+  }
+  &-instagram {
+    background: linear-gradient(45deg, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+  }
+  &-youtube {
+    background-color: hsl(348, 97%, 39%);
+  }
+}
+
+.over {
+  &all-up,
+  &view-up p {
+    color: hsl(163, 72%, 41%);
+  }
+  &all-down,
+  &view-down p {
+    color: hsl(356, 69%, 56%);
+  }
+}
+.profile,
+.overall-today,
+.overview-up,
+.overview-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overview {
+  &-title,
+  &-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.over {
+  &all-card,
+  &view-card {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #e1e4f0;
+    }
+  }
+}
+.dark-theme .over {
+  &all-card:hover,
+  &view-card:hover {
+    background-color: #333a55;
+  }
+}
+
+.attribution {
+  text-align: center;
+  margin-bottom: 2rem;
+  a {
+    color: hsl(203, 89%, 53%);
+  }
+}
+
+.dark-theme {
+  .attribution {
+    color: var(--white);
+    a {
+      color: hsl(195, 100%, 50%);
+    }
+  }
+}
+
+// spacing overall
+
+.profile,
+.overall-number {
+  margin-top: 2.8rem;
+}
+.profile {
+  p {
+    margin-left: 0.8rem;
+  }
+}
+.overall {
+  &-number {
+    margin-bottom: 0.9rem;
+  }
+  &-today {
+    margin-top: 2.5rem;
+    margin-bottom: 2.4rem;
+  }
+  &-up,
+  &-down {
+    margin-left: 0.4rem;
+  }
+}
+
+// overview section
+.overview {
+  &-card {
+    padding: 2.6rem 2.4rem;
+  }
+  &-title {
+    margin-bottom: 2.3rem;
+  }
+  &-up,
+  &-down {
+    p {
+      margin-left: 0.3rem;
+    }
+  }
+}
+
+.toggle {
+  p {
+    margin-right: 1.3rem;
+  }
+  &-btn {
+    width: 48px;
+    height: 24px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: linear-gradient(
+      35deg,
+      hsl(210, 78%, 56%),
+      hsl(146, 68%, 55%)
+    );
+    &:hover {
+      background: linear-gradient(
+        35deg,
+        hsl(210, 78%, 56%),
+        hsl(146, 68%, 55%)
+      );
+    }
+    &.off {
+      justify-content: flex-end;
+      background: #aeb3cb;
+      .circle-btn {
+        background-color: #f1f3fa;
+      }
+    }
+  }
+}
+.circle-btn {
+  width: 18px;
+  height: 18px;
+  background-color: #252b42;
+  border-radius: 50%;
+  margin: 0 4px;
+}
+
+// utilites
+.text-regular {
+  font-weight: var(--regular);
+}
+
+// mobile styles
+.container {
+  box-sizing: border-box;
+  padding: 0 2.5rem;
+  margin: 0 auto;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #848bab;
+  margin: 0;
+  padding: 0;
+}
+.dark-theme {
+  hr {
+    border-top: 1px solid #333a55;
+  }
+}
+.flex-header {
+  display: flex;
+  flex-direction: column;
+}
+
+// font size
+// header
+header {
+  min-height: 200px;
+  border-radius: 0 0 20px 20px;
+  h1 {
+    font-size: 2.4rem;
+  }
+  p {
+    font-size: 1.4rem;
+  }
+}
+main {
+  transform: translateY(-4.6rem);
+}
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.dark-theme {
+  .toggle {
+    &:hover {
+      p {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+// overall section
+.profile p,
+.overall-today p {
+  font-size: 1.2rem;
+}
+.overall {
+  &-number {
+    font-size: 5.6rem;
+    letter-spacing: -2px;
+    line-height: 0.857;
+  }
+  &-unit {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+}
+section {
+  &.overall {
+    margin-bottom: 4.6rem;
+  }
+}
+
+// overview section
+.overview {
+  h3 {
+    font-size: 2.4rem;
+  }
+  &-title {
+    p {
+      font-size: 1.4rem;
+    }
+  }
+  &-stats {
+    p {
+      font-size: 3.2rem;
+    }
+    .overview {
+      &-up,
+      &-down {
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+// spacing
+header {
+  padding-top: 3.6rem;
+  h1 {
+    margin-bottom: 0.4rem;
+  }
+  .content {
+    margin-bottom: 2.4rem;
+  }
+  .toggle {
+    margin-top: 1.6rem;
+  }
+}
+
+// overall section
+.overall-card:not(:last-child) {
+  margin-bottom: 2.4rem;
+}
+
+// overview section
+.overview {
+  h3 {
+    margin-bottom: 2.7rem;
+  }
+  &-card:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
+}
